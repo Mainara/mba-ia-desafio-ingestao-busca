@@ -40,12 +40,25 @@ Este projeto implementa um sistema de RAG (Retrieval-Augmented Generation) capaz
    ```
 
 4. **Configure as variáveis de ambiente:**
-   Crie um arquivo `.env` na raiz (ou edite o existente) e preencha as chaves:
+   Crie um arquivo `.env` na raiz (baseado no `.env.example`) e preencha as chaves:
    ```env
+   # Escolha uma das APIs abaixo:
    OPENAI_API_KEY=sua_chave_openai
    # OU
    GOOGLE_API_KEY=sua_chave_google
+
+   # Configurações do Banco de Dados (Padrão docker-compose)
+   DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/rag
+   PG_VECTOR_COLLECTION_NAME=document_embeddings
+
+   # Caminho do PDF para ingestão
+   PDF_PATH=document.pdf
    ```
+
+   **Detalhes das variáveis:**
+   - `DATABASE_URL`: URL de conexão com o PostgreSQL (já configurada para o container padrão).
+   - `PG_VECTOR_COLLECTION_NAME`: Nome da "tabela" de vetores dentro do Postgres.
+   - `PDF_PATH`: Nome do arquivo PDF que será processado pelo script de ingestão.
 
 ## Como Executar
 
